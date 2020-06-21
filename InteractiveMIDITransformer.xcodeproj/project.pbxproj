@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BCDBA432249F6FF500F1FBCF /* InteractiveMIDITransformer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDBA428249F6FF500F1FBCF /* InteractiveMIDITransformer.framework */; };
+		BCDBA437249F6FF500F1FBCF /* InteractiveMIDITransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA436249F6FF500F1FBCF /* InteractiveMIDITransformerTests.swift */; };
+		BCDBA439249F6FF500F1FBCF /* InteractiveMIDITransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDBA42B249F6FF500F1FBCF /* InteractiveMIDITransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCDBA447249F71A100F1FBCF /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA443249F71A000F1FBCF /* Client.swift */; };
+		BCDBA448249F71A100F1FBCF /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA444249F71A000F1FBCF /* Mock.swift */; };
+		BCDBA449249F71A100F1FBCF /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA445249F71A000F1FBCF /* Models.swift */; };
+		BCDBA44A249F71A100F1FBCF /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA446249F71A000F1FBCF /* Live.swift */; };
+		BCDBA44E249F720500F1FBCF /* TransportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA44C249F720500F1FBCF /* TransportButton.swift */; };
+		BCDBA451249F724A00F1FBCF /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BCDBA450249F724A00F1FBCF /* ComposableArchitecture */; };
+		BCDBA454249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA452249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift */; };
+		BCDBA455249F740B00F1FBCF /* MultistateTransportStyleKit_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA453249F740B00F1FBCF /* MultistateTransportStyleKit_iOS.swift */; };
+		BCDBA457249F74EE00F1FBCF /* InteractiveMIDIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA456249F74EE00F1FBCF /* InteractiveMIDIApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCDBA433249F6FF500F1FBCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCDBA41F249F6FF500F1FBCF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCDBA427249F6FF500F1FBCF;
+			remoteInfo = InteractiveMIDITransformer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BCDBA428249F6FF500F1FBCF /* InteractiveMIDITransformer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InteractiveMIDITransformer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCDBA42B249F6FF500F1FBCF /* InteractiveMIDITransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InteractiveMIDITransformer.h; sourceTree = "<group>"; };
+		BCDBA42C249F6FF500F1FBCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCDBA431249F6FF500F1FBCF /* InteractiveMIDITransformerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InteractiveMIDITransformerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCDBA436249F6FF500F1FBCF /* InteractiveMIDITransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveMIDITransformerTests.swift; sourceTree = "<group>"; };
+		BCDBA438249F6FF500F1FBCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCDBA443249F71A000F1FBCF /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		BCDBA444249F71A000F1FBCF /* Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		BCDBA445249F71A000F1FBCF /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		BCDBA446249F71A000F1FBCF /* Live.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
+		BCDBA44C249F720500F1FBCF /* TransportButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportButton.swift; sourceTree = "<group>"; };
+		BCDBA452249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultistateTransportStyleKit_macOS.swift; path = ../../../../../PaintCode/MultistateTransportButtons/MultistateTransportStyleKit_macOS.swift; sourceTree = "<group>"; };
+		BCDBA453249F740B00F1FBCF /* MultistateTransportStyleKit_iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultistateTransportStyleKit_iOS.swift; path = ../../../../../PaintCode/MultistateTransportButtons/MultistateTransportStyleKit_iOS.swift; sourceTree = "<group>"; };
+		BCDBA456249F74EE00F1FBCF /* InteractiveMIDIApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveMIDIApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCDBA425249F6FF500F1FBCF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCDBA451249F724A00F1FBCF /* ComposableArchitecture in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCDBA42E249F6FF500F1FBCF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCDBA432249F6FF500F1FBCF /* InteractiveMIDITransformer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCDBA41E249F6FF500F1FBCF = {
+			isa = PBXGroup;
+			children = (
+				BCDBA42A249F6FF500F1FBCF /* InteractiveMIDITransformer */,
+				BCDBA435249F6FF500F1FBCF /* InteractiveMIDITransformerTests */,
+				BCDBA429249F6FF500F1FBCF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BCDBA429249F6FF500F1FBCF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBA428249F6FF500F1FBCF /* InteractiveMIDITransformer.framework */,
+				BCDBA431249F6FF500F1FBCF /* InteractiveMIDITransformerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCDBA42A249F6FF500F1FBCF /* InteractiveMIDITransformer */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBA456249F74EE00F1FBCF /* InteractiveMIDIApp.swift */,
+				BCDBA44C249F720500F1FBCF /* TransportButton.swift */,
+				BCDBA452249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift */,
+				BCDBA453249F740B00F1FBCF /* MultistateTransportStyleKit_iOS.swift */,
+				BCDBA442249F714800F1FBCF /* MidimapClient */,
+				BCDBA42B249F6FF500F1FBCF /* InteractiveMIDITransformer.h */,
+				BCDBA42C249F6FF500F1FBCF /* Info.plist */,
+			);
+			path = InteractiveMIDITransformer;
+			sourceTree = "<group>";
+		};
+		BCDBA435249F6FF500F1FBCF /* InteractiveMIDITransformerTests */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBA436249F6FF500F1FBCF /* InteractiveMIDITransformerTests.swift */,
+				BCDBA438249F6FF500F1FBCF /* Info.plist */,
+			);
+			path = InteractiveMIDITransformerTests;
+			sourceTree = "<group>";
+		};
+		BCDBA442249F714800F1FBCF /* MidimapClient */ = {
+			isa = PBXGroup;
+			children = (
+				BCDBA443249F71A000F1FBCF /* Client.swift */,
+				BCDBA446249F71A000F1FBCF /* Live.swift */,
+				BCDBA444249F71A000F1FBCF /* Mock.swift */,
+				BCDBA445249F71A000F1FBCF /* Models.swift */,
+			);
+			path = MidimapClient;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BCDBA423249F6FF500F1FBCF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCDBA439249F6FF500F1FBCF /* InteractiveMIDITransformer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BCDBA427249F6FF500F1FBCF /* InteractiveMIDITransformer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCDBA43C249F6FF500F1FBCF /* Build configuration list for PBXNativeTarget "InteractiveMIDITransformer" */;
+			buildPhases = (
+				BCDBA423249F6FF500F1FBCF /* Headers */,
+				BCDBA424249F6FF500F1FBCF /* Sources */,
+				BCDBA425249F6FF500F1FBCF /* Frameworks */,
+				BCDBA426249F6FF500F1FBCF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InteractiveMIDITransformer;
+			packageProductDependencies = (
+				BCDBA450249F724A00F1FBCF /* ComposableArchitecture */,
+			);
+			productName = InteractiveMIDITransformer;
+			productReference = BCDBA428249F6FF500F1FBCF /* InteractiveMIDITransformer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BCDBA430249F6FF500F1FBCF /* InteractiveMIDITransformerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCDBA43F249F6FF500F1FBCF /* Build configuration list for PBXNativeTarget "InteractiveMIDITransformerTests" */;
+			buildPhases = (
+				BCDBA42D249F6FF500F1FBCF /* Sources */,
+				BCDBA42E249F6FF500F1FBCF /* Frameworks */,
+				BCDBA42F249F6FF500F1FBCF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCDBA434249F6FF500F1FBCF /* PBXTargetDependency */,
+			);
+			name = InteractiveMIDITransformerTests;
+			productName = InteractiveMIDITransformerTests;
+			productReference = BCDBA431249F6FF500F1FBCF /* InteractiveMIDITransformerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCDBA41F249F6FF500F1FBCF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Thom Jordan";
+				TargetAttributes = {
+					BCDBA427249F6FF500F1FBCF = {
+						CreatedOnToolsVersion = 11.4.1;
+						LastSwiftMigration = 1140;
+					};
+					BCDBA430249F6FF500F1FBCF = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+				};
+			};
+			buildConfigurationList = BCDBA422249F6FF500F1FBCF /* Build configuration list for PBXProject "InteractiveMIDITransformer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCDBA41E249F6FF500F1FBCF;
+			packageReferences = (
+				BCDBA44F249F724A00F1FBCF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
+			productRefGroup = BCDBA429249F6FF500F1FBCF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCDBA427249F6FF500F1FBCF /* InteractiveMIDITransformer */,
+				BCDBA430249F6FF500F1FBCF /* InteractiveMIDITransformerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCDBA426249F6FF500F1FBCF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCDBA42F249F6FF500F1FBCF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCDBA424249F6FF500F1FBCF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCDBA454249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift in Sources */,
+				BCDBA449249F71A100F1FBCF /* Models.swift in Sources */,
+				BCDBA44E249F720500F1FBCF /* TransportButton.swift in Sources */,
+				BCDBA44A249F71A100F1FBCF /* Live.swift in Sources */,
+				BCDBA455249F740B00F1FBCF /* MultistateTransportStyleKit_iOS.swift in Sources */,
+				BCDBA457249F74EE00F1FBCF /* InteractiveMIDIApp.swift in Sources */,
+				BCDBA447249F71A100F1FBCF /* Client.swift in Sources */,
+				BCDBA448249F71A100F1FBCF /* Mock.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCDBA42D249F6FF500F1FBCF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCDBA437249F6FF500F1FBCF /* InteractiveMIDITransformerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCDBA434249F6FF500F1FBCF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCDBA427249F6FF500F1FBCF /* InteractiveMIDITransformer */;
+			targetProxy = BCDBA433249F6FF500F1FBCF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BCDBA43A249F6FF500F1FBCF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BCDBA43B249F6FF500F1FBCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BCDBA43D249F6FF500F1FBCF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = LCWUE4FXKB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = InteractiveMIDITransformer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.thomjordan.InteractiveMIDITransformer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BCDBA43E249F6FF500F1FBCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = LCWUE4FXKB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = InteractiveMIDITransformer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.thomjordan.InteractiveMIDITransformer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BCDBA440249F6FF500F1FBCF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = LCWUE4FXKB;
+				INFOPLIST_FILE = InteractiveMIDITransformerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.thomjordan.InteractiveMIDITransformerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BCDBA441249F6FF500F1FBCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = LCWUE4FXKB;
+				INFOPLIST_FILE = InteractiveMIDITransformerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.thomjordan.InteractiveMIDITransformerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCDBA422249F6FF500F1FBCF /* Build configuration list for PBXProject "InteractiveMIDITransformer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCDBA43A249F6FF500F1FBCF /* Debug */,
+				BCDBA43B249F6FF500F1FBCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCDBA43C249F6FF500F1FBCF /* Build configuration list for PBXNativeTarget "InteractiveMIDITransformer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCDBA43D249F6FF500F1FBCF /* Debug */,
+				BCDBA43E249F6FF500F1FBCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCDBA43F249F6FF500F1FBCF /* Build configuration list for PBXNativeTarget "InteractiveMIDITransformerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCDBA440249F6FF500F1FBCF /* Debug */,
+				BCDBA441249F6FF500F1FBCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BCDBA44F249F724A00F1FBCF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thomjordan/swift-composable-architecture";
+			requirement = {
+				kind = revision;
+				revision = 80d9ebacefd76e4cedef735daecf98c3eaf3f5b8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BCDBA450249F724A00F1FBCF /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCDBA44F249F724A00F1FBCF /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BCDBA41F249F6FF500F1FBCF /* Project object */;
+}
