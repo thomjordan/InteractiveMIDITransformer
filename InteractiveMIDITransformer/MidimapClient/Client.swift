@@ -10,18 +10,21 @@ import Combine
 import ComposableArchitecture
 import MidiPlex
 
-struct MidimapClient {
+struct MidiMappingClient {
   enum Action: Equatable {
-    case midimapIncoming(MidiNodeMessage)
+    case incomingMidimapSourceEvent(MidiNodeMessage)
   }
 
   enum Error: Swift.Error, Equatable {
-    case midimapIncomingFailed(String)
     case notAvailable
   }
 
-  func create(id: AnyHashable) -> Effect<Action, Error> {
+  func create(id: AnyHashable) -> Effect<Action, Never> {
     self.create(id)
+  }
+    
+  func destroy(id: AnyHashable) -> Effect<Never, Never> {
+    self.destroy(id)
   }
 
   func startIncomingMidi(id: AnyHashable) -> Effect<Never, Never> {
@@ -32,7 +35,9 @@ struct MidimapClient {
     self.stopIncomingMidi(id)
   }
 
-  var create: (AnyHashable) -> Effect<Action, Error>
+  var create:  (AnyHashable) -> Effect<Action, Never>
+  var destroy: (AnyHashable) -> Effect<Never, Never>
+    
   var startIncomingMidi: (AnyHashable) -> Effect<Never, Never>
   var  stopIncomingMidi: (AnyHashable) -> Effect<Never, Never>
 }

@@ -11,33 +11,51 @@ import Combine
 import ComposableArchitecture
 import MidiPlex
 
-extension MidimapClient {
-  static let live = MidimapClient(
+extension MidiMappingClient {
+  static let live = MidiMappingClient(
     create: { id in
         .run { subscriber in
-            let midimapManager = MidimapManager(
+            let midiMappingManager = MidiMappingManager(
                 manager: MidiCenter.shared,
-                handler: { msg in subscriber.send(.midimapIncoming(msg)) }
+                handler: { msg in
+                    print("ccnum: \(msg.ccnum), value: \(msg.ccval)")
+                    subscriber.send(.incomingMidimapSourceEvent(msg))
+                    if msg.messageType == .controlChange {
+                        print("ccnum: \(msg.ccnum), value: \(msg.ccval)")
+                    }
+                }
             )
-            guard midimapManager.isMidiMappingAvailable else {
-                subscriber.send(completion: .failure(.notAvailable))
-                return AnyCancellable {}
+            
+            midiMappingManagers[id] = midiMappingManager
+            midiMappingManagers[id]?.registerMidiReceiveHandler() 
+            
+            return AnyCancellable {
+                midiMappingManagers[id]?.unregisterMidiReceiveHandler()
+                midiMappingManagers[id] = nil
             }
-            midimapManagers[id] = midimapManager
-            return AnyCancellable { midimapManagers[id] = nil }
         }
     },
+    destroy: { id in
+        .fireAndForget {
+            midiMappingManagers[id]?.unregisterMidiReceiveHandler()
+            midiMappingManagers[id] = nil
+        }
+    },
+    // for use with a button-switch control to toggle midiMapping on and off
     startIncomingMidi: { id in
-      .fireAndForget { midimapManagers[id]?.startMidiMapping() }
+        .fireAndForget { midiMappingManagers[id]?.registerMidiReceiveHandler() }
     },
     stopIncomingMidi: { id in
-      .fireAndForget { midimapManagers[id]?.stopMidiMapping() }
+      .fireAndForget { midiMappingManagers[id]?.unregisterMidiReceiveHandler() }
     })
 }
 
 typealias MidiNodeMessageHandler = (MidiNodeMessage) -> Void
 
-final class MidimapManager {
+
+final class MidiMappingManager {
+    var uuid: Int?
+    
   init(manager: MidiCenter, handler: @escaping MidiNodeMessageHandler) {
     self.manager = manager
     self.handler = handler
@@ -46,12 +64,16 @@ final class MidimapManager {
   var manager: MidiCenter
   var handler: MidiNodeMessageHandler
 
-  var isMidiMappingAvailable: Bool { return true }
+  func registerMidiReceiveHandler() {
+    self.uuid = self.manager.registerMidiReceiveHandler(handler)
+  }
 
-  func startMidiMapping() {}
-
-  func stopMidiMapping() {}
+  func unregisterMidiReceiveHandler() {
+    if let id = self.uuid {
+      self.manager.unregisterMidiReceiveHandler(at: id)
+    }
+  }
 }
 
-var midimapManagers: [AnyHashable: MidimapManager] = [:]
+var midiMappingManagers: [AnyHashable: MidiMappingManager] = [:]
 

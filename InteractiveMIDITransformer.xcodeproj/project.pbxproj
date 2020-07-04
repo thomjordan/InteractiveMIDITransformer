@@ -19,6 +19,7 @@
 		BCDBA454249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA452249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift */; };
 		BCDBA455249F740B00F1FBCF /* MultistateTransportStyleKit_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA453249F740B00F1FBCF /* MultistateTransportStyleKit_iOS.swift */; };
 		BCDBA457249F74EE00F1FBCF /* InteractiveMIDIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA456249F74EE00F1FBCF /* InteractiveMIDIApp.swift */; };
+		BCDBA45D249FC13D00F1FBCF /* ConfigurableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDBA45C249FC13D00F1FBCF /* ConfigurableStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		BCDBA452249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultistateTransportStyleKit_macOS.swift; path = ../../../../../PaintCode/MultistateTransportButtons/MultistateTransportStyleKit_macOS.swift; sourceTree = "<group>"; };
 		BCDBA453249F740B00F1FBCF /* MultistateTransportStyleKit_iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultistateTransportStyleKit_iOS.swift; path = ../../../../../PaintCode/MultistateTransportButtons/MultistateTransportStyleKit_iOS.swift; sourceTree = "<group>"; };
 		BCDBA456249F74EE00F1FBCF /* InteractiveMIDIApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveMIDIApp.swift; sourceTree = "<group>"; };
+		BCDBA45C249FC13D00F1FBCF /* ConfigurableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				BCDBA456249F74EE00F1FBCF /* InteractiveMIDIApp.swift */,
+				BCDBA45C249FC13D00F1FBCF /* ConfigurableStore.swift */,
 				BCDBA44C249F720500F1FBCF /* TransportButton.swift */,
 				BCDBA452249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift */,
 				BCDBA453249F740B00F1FBCF /* MultistateTransportStyleKit_iOS.swift */,
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDBA45D249FC13D00F1FBCF /* ConfigurableStore.swift in Sources */,
 				BCDBA454249F740B00F1FBCF /* MultistateTransportStyleKit_macOS.swift in Sources */,
 				BCDBA449249F71A100F1FBCF /* Models.swift in Sources */,
 				BCDBA44E249F720500F1FBCF /* TransportButton.swift in Sources */,

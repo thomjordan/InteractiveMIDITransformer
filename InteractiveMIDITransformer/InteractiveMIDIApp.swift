@@ -18,7 +18,7 @@ struct ControlsState: Equatable {
     var cc2value: Double = 0.0
 }
 
-public enum ControlsAction: Equatable {
+enum ControlsAction: Equatable {
   case slider1Changed(Double)
   case slider2Changed(Double)
 }
@@ -52,7 +52,7 @@ struct TransportState: Equatable {
     var actionStatus : ActionStatus = .nonaction
 }
 
-public enum TransportAction: Equatable {
+enum TransportAction: Equatable {
     case playButtonEngaged
     case stopButtonEngaged
     case buttonReleased
@@ -64,17 +64,28 @@ struct TransportEnvironment {}
 
 // ******************************************************
 
-public struct AppState: Equatable {
+struct AppState: Equatable {
     var controls  = ControlsState()
     var transport = TransportState()
 }
 
-public enum AppAction: Equatable {
+enum AppAction: Equatable {
     case controls(ControlsAction)
     case transport(TransportAction)
+    case midiMappingClient(MidiMappingClient.Action)
+    case onAppear
+    case onDisappear
 }
 
-public struct AppEnvironment {}
+struct AppEnvironment {
+    var mainQueue: AnySchedulerOf<DispatchQueue>
+    var midiMappingClient: MidiMappingClient
+    
+    static let live = AppEnvironment(
+      mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
+      midiMappingClient: .live
+    )
+}
 
 // ******************************************************
 
@@ -132,19 +143,67 @@ let transportReducer = Reducer<TransportState, TransportAction, TransportEnviron
     }
 }
 
-public let appReducer = Reducer<AppState, AppAction, AppEnvironment>
-  .combine(
-    controlsReducer.pullback(
-      state: \AppState.controls,
-      action: /AppAction.controls,
-      environment: { _ in ControlsEnvironment() }
-    ),
-    transportReducer.pullback(
-      state: \AppState.transport,
-      action: /AppAction.transport,
-      environment: { _ in TransportEnvironment() }
-    )
+let appReducer_ = Reducer<AppState, AppAction, AppEnvironment> { state, action, environment in
+    struct MidiMappingClientId: Hashable {}
+    
+    switch action {
+        
+    case .controls:
+        return .none
+        
+    case .transport:
+        return .none
+        
+    case .onAppear:
+        return environment.midiMappingClient.create(id: MidiMappingClientId())
+            //.receive(on: environment.mainQueue)
+            .map(AppAction.midiMappingClient)
+            //.eraseToEffect()
+
+    case .onDisappear:
+        return environment.midiMappingClient.destroy(id: MidiMappingClientId())
+            .fireAndForget()
+        
+    case let .midiMappingClient(.incomingMidimapSourceEvent(msg)):
+        var result: Effect<AppAction, Never>?
+        //DispatchQueue.main.async {
+        print("ccnum: \(msg.ccnum), value: \(msg.ccval)")
+        guard msg.messageType == .controlChange else { return .none }
+        //print("ccnum: \(msg.ccnum), value: \(msg.ccval)")
+        switch (msg.data1, msg.data2) {
+        case (0, _):    result = Effect(value: AppAction.controls(.slider1Changed(Double(msg.data2))))
+        case (1, _):    result = Effect(value: AppAction.controls(.slider2Changed(Double(msg.data2))))
+        case (41, 127): result = Effect(value: AppAction.transport(.playButtonEngaged))
+        case (41,   0): result = Effect(value: AppAction.transport(.buttonReleased))
+        case (42, 127): result = Effect(value: AppAction.transport(.stopButtonEngaged))
+        case (42,   0): result = Effect(value: AppAction.transport(.buttonReleased))
+        default: break
+        }
+        //}
+        return result ?? .none
+//            .receive(on: environment.mainQueue)
+//            .eraseToEffect() ?? .none
+        
+//h
+    }
+}
+.combined( with: controlsReducer.pullback( state: \AppState.controls, action: /AppAction.controls, environment: { _ in ControlsEnvironment() } ) )
+.combined( with: transportReducer.pullback( state: \AppState.transport, action: /AppAction.transport, environment: { _ in TransportEnvironment() } ) )
+
+
+let appReducer = Reducer<AppState, AppAction, AppEnvironment>
+.combine(
+  controlsReducer.pullback(
+    state: \AppState.controls,
+    action: /AppAction.controls,
+    environment: { _ in ControlsEnvironment() }
+  ),
+  transportReducer.pullback(
+    state: \AppState.transport,
+    action: /AppAction.transport,
+    environment: { _ in TransportEnvironment() }
   )
+)
 
 // ******************************************************
 
@@ -210,51 +269,36 @@ struct AppView: View {
 
 // ******************************************************
 
-public struct ConfigurableStore<State, Action> {
-    var store: Store<State, Action>
-    
-    init(store: Store<State, Action>) {
-        self.store = store
-    }
-    
-    public init<Environment>(
-        initialState: State,
-        reducer: Reducer<State, Action, Environment>,
-        environment: Environment,
-        configure: (Store<State, Action>) -> Void
-    ) {
-        self.init(store:
-            Store(
-                initialState: initialState,
-                reducer: reducer,
-                environment: environment
-            )
-        )
-        configure(self.store)
-    }
-}
-
-
-let appStore = ConfigurableStore(
-    initialState: AppState(),
-    reducer: appReducer,
-    environment: AppEnvironment()
-) { `self` in
+let startMidi: (Store<AppState, AppAction>) -> Void = { store in
     onMidiReceive { msg in
         DispatchQueue.main.async {
             guard msg.messageType == .controlChange else { return }
+            print("cc: \(msg.ccnum), value: \(msg.ccval)")
             switch (msg.data1, msg.data2) {
-            case (0, _):    self.send(AppAction.controls(.slider1Changed(Double(msg.data2))))
-            case (1, _):    self.send(AppAction.controls(.slider2Changed(Double(msg.data2))))
-            case (41, 127): self.send(AppAction.transport(.playButtonEngaged))
-            case (41,   0): self.send(AppAction.transport(.buttonReleased))
-            case (42, 127): self.send(AppAction.transport(.stopButtonEngaged))
-            case (42,   0): self.send(AppAction.transport(.buttonReleased))
+            case (0, _):    store.send(AppAction.controls(.slider1Changed(Double(msg.data2))))
+            case (1, _):    store.send(AppAction.controls(.slider2Changed(Double(msg.data2))))
+            case (41, 127): store.send(AppAction.transport(.playButtonEngaged))
+            case (41,   0): store.send(AppAction.transport(.buttonReleased))
+            case (42, 127): store.send(AppAction.transport(.stopButtonEngaged))
+            case (42,   0): store.send(AppAction.transport(.buttonReleased))
             default: break
             }
         }
     }
-}.store
+}
+
+let appStore = ConfigurableStore(
+    initialState: AppState(),
+    reducer: appReducer,
+    environment: AppEnvironment.live
+) { `self` in startMidi(self) }.store
+
+
+let appStore_ = Store(
+    initialState: AppState(),
+    reducer: appReducer_,
+    environment: AppEnvironment.live
+)
 
 
 public struct TheView {
@@ -262,51 +306,4 @@ public struct TheView {
     AppView( store: appStore )
 }
 
-// ******************************************************
 
-
-//@dynamicMemberLookup
-//public struct ConfigurableStore<State, Action> {
-//    var store: Store<State, Action>
-//
-//    init(store: Store<State, Action>) {
-//        self.store = store
-//    }
-//
-//    public init<Environment>(
-//        initialState: State,
-//        reducer: Reducer<State, Action, Environment>,
-//        environment: Environment,
-//        configure: (Store<State, Action>) -> Void
-//    ) {
-//        self.init(store:
-//            Store(
-//                initialState: initialState,
-//                reducer: reducer,
-//                environment: environment
-//            )
-//        )
-//        configure(self.store)
-//    }
-//
-//    public subscript<A>(dynamicMember keyPath: KeyPath<Store<State, Action>, A>) -> A {
-//        self.store[keyPath: keyPath]
-//    }
-//}
-//
-//let startMidi: (Store<AppState, AppAction>) -> Void = { `self` in
-//    onMidiReceive { msg in
-//        DispatchQueue.main.async {
-//            guard msg.messageType == .controlChange else { return }
-//            switch (msg.data1, msg.data2) {
-//            case (0, _):    self.send(AppAction.controls(.slider1Changed(Double(msg.data2))))
-//            case (1, _):    self.send(AppAction.controls(.slider2Changed(Double(msg.data2))))
-//            case (41, 127): self.send(AppAction.transport(.playButtonEngaged))
-//            case (41,   0): self.send(AppAction.transport(.buttonReleased))
-//            case (42, 127): self.send(AppAction.transport(.stopButtonEngaged))
-//            case (42,   0): self.send(AppAction.transport(.buttonReleased))
-//            default: break
-//            }
-//        }
-//    }
-//}
